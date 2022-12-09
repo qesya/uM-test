@@ -1,0 +1,531 @@
+{
+  "uuid": "9a9688f7-22cc-4f49-a273-dc3093939223",
+  "lastMigration": 24,
+  "name": "react-code-test",
+  "endpointPrefix": "api",
+  "latency": 500,
+  "port": 9001,
+  "hostname": "127.0.0.1",
+  "routes": [
+    {
+      "uuid": "13b29b35-5844-4508-b0fd-6c8175b6a775",
+      "documentation": "Register new user",
+      "method": "post",
+      "endpoint": "auth/registration",
+      "responses": [
+        {
+          "uuid": "ae3922c2-c63a-4ebd-89a6-aeb8a0b735e2",
+          "body": "{\"message\":\"There was an error\"}",
+          "latency": 2000,
+          "statusCode": 500,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "databucketID": "",
+          "bodyType": "INLINE"
+        },
+        {
+          "uuid": "26034179-a96d-44b3-9ba9-cf94d92eea41",
+          "body": "{\n  \"user\": {\n    \"id\": \"Aqj9nDZTlx5vSCP9Got2C\",\n    \"firstName\": \"Joe\",\n    \"lastName\": \"Bloggs\",\n    \"email\": \"joe@bloggs.com\"\n  },\n  \"jwt\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkFxajluRFpUbHg1dlNDUDlHb3QyQyIsImZpcnN0TmFtZSI6IkxlZSIsImxhc3ROYW1lIjoiSGl0Y2hjb2NrIiwiZW1haWwiOiJsZWVAaC5jb20iLCJ0ZWFtSWQiOiI4cHd1c3RzZHczd2ZnQUV5WWE5UTMiLCJyb2xlIjoiQURNSU4iLCJiaW8iOiIiLCJjcmVhdGVkQXQiOjE2NTI2NDY3Mzg0NTIsImlhdCI6MTY1MjY0NjczOH0.H67rP1ePc95c9bzLBmwrhSyee0Mm_MmcDNJeNs1tlxg\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "",
+              "value": "{\"email\":\"joe@bloggs.com\",\"firstName\":\"Joe\",\"lastName\":\"Bloggs\",\"password\":\"letmein123\",\"confirmPassword\":\"letmein123\"}",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a6a2123a-0c86-4acf-a750-5e07a195168f",
+      "documentation": "Log in with user account details",
+      "method": "post",
+      "endpoint": "auth/login",
+      "responses": [
+        {
+          "uuid": "1be3c45f-384a-4863-9f9b-3c69d8808e7e",
+          "body": "{\"message\":\"Invalid username or password\"}",
+          "latency": 2000,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "databucketID": "",
+          "bodyType": "INLINE"
+        },
+        {
+          "uuid": "cf70bf5d-1b84-4e6c-9dce-9b61ebe8320d",
+          "body": "{\n  \"user\": {\n    \"id\": \"Aqj9nDZTlx5vSCP9Got2C\",\n    \"firstName\": \"Joe\",\n    \"lastName\": \"Bloggs\",\n    \"email\": \"joe@bloggs.com\"\n  },\n  \"jwt\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkFxajluRFpUbHg1dlNDUDlHb3QyQyIsImZpcnN0TmFtZSI6IkxlZSIsImxhc3ROYW1lIjoiSGl0Y2hjb2NrIiwiZW1haWwiOiJsZWVAaC5jb20iLCJ0ZWFtSWQiOiI4cHd1c3RzZHczd2ZnQUV5WWE5UTMiLCJyb2xlIjoiQURNSU4iLCJiaW8iOiIiLCJjcmVhdGVkQXQiOjE2NTI2NDY3Mzg0NTIsImlhdCI6MTY1MjY0NjczOH0.H67rP1ePc95c9bzLBmwrhSyee0Mm_MmcDNJeNs1tlxg\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "",
+              "value": "{\"email\":\"joe@bloggs.com\",\"password\":\"letmein123\"}",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "b86abb97-0cc8-4c8f-9ed1-abf4a8a1fbe5",
+      "documentation": "Get user details",
+      "method": "get",
+      "endpoint": "auth/me",
+      "responses": [
+        {
+          "uuid": "9b67e6f4-1268-44e7-b3a7-8eb53463625b",
+          "body": "{\"message\":\"Youu are not authorised to make this request, please log in to continue\"}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "databucketID": "",
+          "bodyType": "INLINE"
+        },
+        {
+          "uuid": "6cfac328-5d97-439f-9d32-3618e38c24c1",
+          "body": "{\n  \"id\": \"Aqj9nDZTlx5vSCP9Got2C\",\n  \"firstName\": \"Joe\",\n  \"lastName\": \"Bloggs\",\n  \"email\": \"joe@bloggs.com\",\n  \"address_line_1\": \"29 Acacia Road\",\n  \"address_line_2\": \"\",\n  \"city\": \"London\",\n  \"postcode\": \"SW23 4TW\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkFxajluRFpUbHg1dlNDUDlHb3QyQyIsImZpcnN0TmFtZSI6IkxlZSIsImxhc3ROYW1lIjoiSGl0Y2hjb2NrIiwiZW1haWwiOiJsZWVAaC5jb20iLCJ0ZWFtSWQiOiI4cHd1c3RzZHczd2ZnQUV5WWE5UTMiLCJyb2xlIjoiQURNSU4iLCJiaW8iOiIiLCJjcmVhdGVkQXQiOjE2NTI2NDY3Mzg0NTIsImlhdCI6MTY1MjY0NjczOH0.H67rP1ePc95c9bzLBmwrhSyee0Mm_MmcDNJeNs1tlxg",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE"
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f05047d8-55dc-40d1-998a-3d09129138dd",
+      "documentation": "Change user password",
+      "method": "put",
+      "endpoint": "auth/change_password",
+      "responses": [
+        {
+          "uuid": "7a7630f0-e7ee-46b3-84c4-4e2f37c1bba6",
+          "body": "{\n  \"old_password\": \"Old Password is not correct\",\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c85d6f3c-c673-4202-b536-bdc25ce37313",
+          "body": "{\"detail\": \"Password succesfully changed\"}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "old_password",
+              "value": "letmein123",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fd8cddbc-0d7d-4132-8db7-8a9ea2bee04f",
+      "documentation": "Update user profile",
+      "method": "patch",
+      "endpoint": "auth/update_profile",
+      "responses": [
+        {
+          "uuid": "62344a57-a8fd-4755-afe2-9b7b40bc455b",
+          "body": "{\"detail\": \"Profile details succesfully updated\"}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1310b374-9975-4f0b-8614-533c4979b2d7",
+          "body": "{\"detail\": \"User ID is missing from request\"}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "User id is missing",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "id",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "id",
+              "value": "",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "483bd972-e2c6-44c0-8b81-8618585a6294",
+          "body": "{\"detail\": \"First name is a required field\"}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "First name is missing",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "firstName",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "firstName",
+              "value": "",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4aa199d5-cfeb-4f71-bdd4-6784cbe90c9b",
+          "body": "{\"detail\": \"Last name is a required field\"}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Last name is missing",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "lastName",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "lastName",
+              "value": "",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "0b0a83a6-6dc1-4ba1-9fcf-5229eacfc69d",
+          "body": "{\"detail\": \"Email is a required field\"}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Email address is missing",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "email",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "email",
+              "value": "",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "3b2ffcbb-5c14-4d5c-b8e4-4255285153d4",
+          "body": "{\"detail\": \"Address line 1 is a required field\"}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Missing first line of address",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "address_line_1",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "address_line_1",
+              "value": "",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "4347fc6c-eb91-471c-9cc8-0c4855a29587",
+          "body": "{\"detail\": \"City is a required field\"}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "City is missing from address",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "city",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "city",
+              "value": "",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "6eb21422-470e-415d-bd02-c66b4152368d",
+          "body": "{\"detail\": \"Postcode is a required field\"}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Postcode is missing from address",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "postcode",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "postcode",
+              "value": "",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "e3c15ab4-2f40-4b42-a469-2a103644256a",
+          "body": "{\"detail\": \"User id not found\"}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "User id incorrect",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "id",
+              "value": "Aqj9nDZTlx5vSCP9Got2C",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
